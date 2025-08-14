@@ -1,0 +1,41 @@
+{% extends 'store/base.html' %}
+{%block content %}
+ <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">The Silk <br/>Update Profile</h1>
+                    <p class="">Update user Profile.....</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+           <div class="row">
+         
+                 <div class ="col-8">
+                     <br/><br/>
+
+                  <form method="POST" action="{% url 'update'%}">
+                     {% csrf_token %}
+
+                     {{user_form.as_p}}
+                     <br/><br/>
+                     <button type="submit" class="btn btn-secondary">Update Profile</button>
+  
+</form>
+<br/><br/>
+<a href="{%url 'update_password'   %} class=" btn-secondary"">Update Password</a>
+
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+                 </div>
+                  
+             
+
+           </div>
+        </div>
+{%endblock%}
