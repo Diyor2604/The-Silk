@@ -5,9 +5,9 @@ import os
 from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-#Load our environmental variables
 load_dotenv()
+#Load our environmental variables
+DB_PASSWORD_YO=os.environ.get('DB_PASSWORD_YO')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -17,8 +17,8 @@ SECRET_KEY = 'django-insecure-^ije*5sn$5%k$re-^=9fvty)oc8@!yq9h%)750p01pxg28w*69
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['postgres-production-b6fa.up.railway.app','https://postgres-production-b6fa.up.railway.app']
-CSRF_TRUSTED_ORIGINS=['postgres-production-b6fa.up.railway.app','https://postgres-production-b6fa.up.railway.app']
+ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS=[]
 
 
 # Application definition
@@ -30,11 +30,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
     'store',
     'cart',   
     'payment',  
-    'whitenoise.runserver_nostatic'
+    'whitenoise.runserver_nostatic',
+    'paypal.standard.ipn',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +140,10 @@ MEDIA_ROOT=(
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Add paypal settings
+#Set sandbox to true
+PAYPAL_TEST=True
+
+PAYPAL_RECEIVER_TEST='bussiness@accountemail.com'
+
